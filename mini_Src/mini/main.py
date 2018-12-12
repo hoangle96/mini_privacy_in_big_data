@@ -1,15 +1,15 @@
 
 import re
-from taxonomies import attributes_array_by_order_database
-from taxonomies import attributes_array_int_then_string
-from taxonomies import list_num
+from mini.taxonomies import attributes_array_by_order_database
+from mini.taxonomies import attributes_array_int_then_string
+from mini.taxonomies import list_num
 
-from algorithm_6_7 import algorithm_6
-from algorithm_6_7 import algorithm_6_test
-from test_taxonomies import *
+from mini.algorithm_6_7 import algorithm_6
+from mini.algorithm_6_7 import algorithm_6_test
+from mini.test_taxonomies import *
 
-from hierarchical_clustering import single_linkage_clustering
-from hierarchical_clustering import num
+from mini.hierarchical_clustering import single_linkage_clustering
+from mini.hierarchical_clustering import num
 
 
 def convert_from_newmap_to_oldmap(map_num):

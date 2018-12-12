@@ -5,12 +5,12 @@ Created on 2 Dec 2018
 '''
 
 import re
-from helper_funcs import map_iterator_int
-from helper_funcs import map_iterator_str
-from helper_funcs import remove_nodes_under_k
-from helper_funcs import sum_of_supports
+from mini.helper_funcs import map_iterator_int
+from mini.helper_funcs import map_iterator_str
+from mini.helper_funcs import remove_nodes_under_k
+from mini.helper_funcs import sum_of_supports
 from _functools import reduce
-from helper_funcs import set_of_supports
+from mini.helper_funcs import set_of_supports
 
 
 def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string):
