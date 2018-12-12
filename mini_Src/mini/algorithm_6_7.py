@@ -17,9 +17,9 @@ def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_ar
     '''step 1'''
     with open(database_path) as f: 
         i = 1
+        relevant_indexes = set()
         for line in f:
             line_arr = re.split(", |\\n",line)
-            #line_arr = line.split(", ")
             if "?" in line_arr:
                 i = i + 1
                 continue 
@@ -28,8 +28,10 @@ def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_ar
                 if attributes_array_int_then_string.index(current_row) in range(0,6):
                     map_iterator_int(line_arr[j],i,current_row)
                 else:
-                    map_iterator_str(line_arr[j],i,current_row)        
+                    map_iterator_str(line_arr[j],i,current_row)
+            relevant_indexes.add(i)        
             i = i + 1
+    f.close()
             
     '''step 2'''
     list(map(lambda n:remove_nodes_under_k(n,k),attributes_array_by_order_database))
@@ -38,7 +40,7 @@ def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_ar
     processed = []
     F_cf = []
     F_cf = algorithm_7(attributes_map, k, processed,F_cf)
-    return F_cf
+    return (F_cf, relevant_indexes)
 
 def algorithm_6_test(k,taxonomies_tree):
     '''step 1'''

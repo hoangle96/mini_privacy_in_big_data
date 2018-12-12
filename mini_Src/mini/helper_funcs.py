@@ -64,3 +64,16 @@ def is_set_in_set(the_out_set,the_in_set):
         if(the_in_set == item):
             return True
     return False
+
+def number_of_leaves(node):
+    if node.get('children') == []:
+        return 1
+    
+    lst=list(map(number_of_leaves,node.get('children')))    
+    summ = reduce(lambda x,y: x+y,lst) 
+    return summ
+
+
+
+
+
