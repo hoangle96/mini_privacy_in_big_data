@@ -40,7 +40,7 @@ def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_ar
     processed = []
     F_cf = []
     F_cf = algorithm_7(attributes_map, k, processed,F_cf)
-    return (F_cf, relevant_indexes)
+    return (F_cf, relevant_indexes, i)
 
 def algorithm_6_test(k,taxonomies_tree):
     '''step 1'''
@@ -77,8 +77,6 @@ def algorithm_7(root,k,processed,closed):
                 if(len(new_support) == sum_of_supports(root)):
                     isRootClosed = False
                 new_child_list = filtered_children
-                #head = new_child_list[:j]
-                #tail = new_child_list[j+1:]
                 new_root = {"data":root["data"] , "children":new_child_list[:j]+[child]+new_child_list[j+1:]}
                 algorithm_7(new_root, k, processed, closed)
                 if(isRootClosed == False):

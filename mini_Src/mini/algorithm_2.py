@@ -9,27 +9,34 @@ import copy
 def algorithm_2(k, cover):
     cluster = copy.deepcopy(cover);
     while intersecting_subsets(cluster)!=[]:
-        [S_j,S_i] = intersecting_subsets(cluster)
+        [S_j, j, S_i, i] = intersecting_subsets(cluster)
+        S_j = copy.deepcopy(cluster[j])
+        S_i = copy.deepcopy(cluster[i])
         R = list(S_j & S_i)[0]
-        if len(S_j) > k:
-            S_j = S_j - set(R)
-        elif len(S_i) > k:
-            S_i = S_i - set(R)
+        if len(S_j) > k:         
+            cluster[j] = S_j.difference(set([R]))        
+        elif len(S_i) > k:    
+            cluster[i] = S_i.difference(set([R]))
         else:
-            cluster.remove(S_j)
-            cluster.remove(S_i)
+            cluster.remove(cluster[j])
+            cluster.remove(cluster[i])
             cluster.append(S_j | S_i)
     return cluster
         
  
     
 def intersecting_subsets(S):
+    i = 0
     for s in S:
+        j = 0
         for item in S:
             if(s == item):
+                j = j + 1
                 continue
             if len(item & s)!=0:
-                return [item,s]
+                return [item, j, s, i]
+            j = j + 1
+        i = i + 1
     return []
     
 

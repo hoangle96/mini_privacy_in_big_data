@@ -6,6 +6,7 @@ Created on 2 Dec 2018
 
 '''helper functions'''
 from _functools import reduce
+import re
 
 def map_iterator_int(value,i,root): 
     for key,mapval in root.items():
@@ -73,6 +74,19 @@ def number_of_leaves(node):
     summ = reduce(lambda x,y: x+y,lst) 
     return summ
 
+def generalize_S(database_path, S, relevant_indexes,attributes_array_by_order_database):
+    generalized_records = [[set() for i in range(0,len(attributes_array_by_order_database))] for j in range(0,len(S)) ] 
+    with open(database_path) as f: 
+        i = 1
+        for line in f:
+            line_arr = re.split(", |\\n",line)
+            if i in relevant_indexes:
+                for q in range(0,len(attributes_array_by_order_database)):
+                    for j in range(0,len(S)):
+                        if i in S[j]:
+                            generalized_records[j][q].add(line_arr[q])
+            i = i + 1
+    return generalized_records
 
 
 

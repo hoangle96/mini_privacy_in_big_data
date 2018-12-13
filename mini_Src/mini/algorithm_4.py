@@ -7,25 +7,13 @@ from __future__ import division
 import re
 import random
 from _functools import reduce
-from mini.helper_funcs import number_of_leaves
+from mini.helper_funcs import number_of_leaves, generalize_S
 
 import sys
 #from numpy.core.test_rational import rational
 
 
-def generalize_S(database_path, S, relevant_indexes,attributes_array_by_order_database):
-    generalized_records = [[set() for i in range(0,len(attributes_array_by_order_database))] for j in range(0,len(S)) ] 
-    with open(database_path) as f: 
-        i = 1
-        for line in f:
-            line_arr = re.split(", |\\n",line)
-            if i in relevant_indexes:
-                for q in range(0,len(attributes_array_by_order_database)):
-                    for j in range(0,len(S)):
-                        if i in S[j]:
-                            generalized_records[j][q].add(line_arr[q])
-            i = i + 1
-    return generalized_records
+
 
 def cost_function(generalized_record,attributes_array_by_order_database):
     summ = 0;

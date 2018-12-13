@@ -3,7 +3,8 @@ import re
 from mini.taxonomies import attributes_array_by_order_database
 from mini.taxonomies import attributes_array_int_then_string
 from mini.taxonomies import list_num
-from mini.helper_funcs import remove_nodes_under_k,map_iterator_int,map_iterator_str
+from mini.helper_funcs import remove_nodes_under_k,map_iterator_int,map_iterator_str, generalize_S
+from mini.k_anon import k_anon
 
 
 from mini.algorithm_6_7 import algorithm_7,algorithm_6
@@ -95,13 +96,18 @@ def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_ar
     F_cf = []
     F_cf = algorithm_7(attributes_map, k, processed,F_cf)
     return (F_cf, relevant_indexes)
+  '''  
 
-def algorithm_5(database_path, k):
-    (F_cf, relevant_indexes) = algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string)
-    cover = algorithm_4(relevant_indexes, F_cf,k, database_path)
+def algorithm_5(database_path, k, attributes_array_by_order_database):
+    (F_cf, relevant_indexes, lines_in_database) = algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string)
+    cover = algorithm_4(relevant_indexes, F_cf,k, database_path,attributes_array_by_order_database)
     cluster = algorithm_2(k,cover)
+    k_anon(database_path, cluster, relevant_indexes,attributes_array_by_order_database, lines_in_database)
+    
+   
+    
   
-  
+'''
 list_num = [list_age]
 lists_num = make_int_lists(list_num)    
 make_new_int_maps(lists_num , DB_test1, DB_test2 )
@@ -113,11 +119,16 @@ print(algorithm_4(relevant_indexes, F_cf, k, "./database",DB_test1))
 
 lists_num = make_int_lists(list_num)
 make_new_int_maps(lists_num , attributes_array_by_order_database, attributes_array_int_then_string )
-(F_cf, relevant_indexes) = algorithm_6("./big_database.txt",k,attributes_array_by_order_database,attributes_array_int_then_string)
-print(F_cf)
+
+'''
+(F_cf, relevant_indexes, i) = algorithm_6("./big_database.txt",k,attributes_array_by_order_database,attributes_array_int_then_string)
+print("F_cf: ", F_cf)
 cover = algorithm_4(relevant_indexes, F_cf, k, "./big_database.txt",attributes_array_by_order_database)
-print(cover)
-print(algorithm_2(k,cover))
+print("cover: ", cover)
+cluster = algorithm_2(k,cover)
+print("cluster: ", cluster)
+'''
+algorithm_5("./big_database.txt", k, attributes_array_by_order_database)
 
 
 
