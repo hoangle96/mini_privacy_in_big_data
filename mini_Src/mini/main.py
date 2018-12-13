@@ -6,9 +6,10 @@ from mini.taxonomies import list_num
 from mini.helper_funcs import remove_nodes_under_k,map_iterator_int,map_iterator_str
 
 
-from mini.algorithm_6_7 import algorithm_7
+from mini.algorithm_6_7 import algorithm_7,algorithm_6
 from mini.algorithm_6_7 import algorithm_6_test
 from mini.algorithm_4 import algorithm_4
+from mini.algorithm_2 import algorithm_2
 from mini.test_taxonomies import *
 import copy
 
@@ -28,7 +29,7 @@ def convert_from_newmap_to_oldmap(map_num):
 
 
 def make_int_lists(list_num):
-    with open("./database") as f: 
+    with open("./big_database.txt") as f: 
         i = 1
         for line in f:
             line_arr = re.split(", |\\n",line)
@@ -43,9 +44,10 @@ def make_int_lists(list_num):
                     #print(line_arr[j])
                     list_num[index_of_int].append(num(line_arr[j]))   
             i = i + 1
+    f.close()
     return list_num
 
-def make_new_int_maps(list_num , attributes_array_int_then_string , attributes_array_by_order_database):
+def make_new_int_maps(list_num , attributes_array_by_order_database, attributes_array_int_then_string ):
     for i  in range(0 , len(list_num)):
         hierarchical_clustering_i = single_linkage_clustering(list_num[i])
         new_map_i = convert_from_newmap_to_oldmap(hierarchical_clustering_i)
@@ -55,17 +57,18 @@ def make_new_int_maps(list_num , attributes_array_int_then_string , attributes_a
         attributes_array_int_then_string[i] = new_map_i
 
 #print(attributes_array_int_then_string)
-lists_num = make_int_lists(list_num)
+
 #print(lists_num)
 
 #make_new_int_maps(lists_num , attributes_array_int_then_string , attributes_array_by_order_database )
-make_new_int_maps(lists_num , DB_test1, DB_test2 )
+
 print("Enter k")
 k = num(input())
 #print(algorithm_6_test(3,[DB_test]))
 #print(attributes_array_by_order_database[4])#age map
+'''
 def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string):
-    '''step 1'''
+    step 1
     with open(database_path) as f: 
         i = 1
         relevant_indexes = set()
@@ -84,23 +87,37 @@ def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_ar
             i = i + 1
     f.close()
             
-    '''step 2'''
+    step 2
     list(map(lambda n:remove_nodes_under_k(n,k),attributes_array_by_order_database))
-    ''' steps 5-9'''
+     steps 5-9
     attributes_map = {"data": "root", "children": attributes_array_by_order_database}
     processed = []
     F_cf = []
     F_cf = algorithm_7(attributes_map, k, processed,F_cf)
     return (F_cf, relevant_indexes)
-'''
+
 def algorithm_5(database_path, k):
     (F_cf, relevant_indexes) = algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string)
     cover = algorithm_4(relevant_indexes, F_cf,k, database_path)
-    '''
-
+    cluster = algorithm_2(k,cover)
+  
+  
+list_num = [list_age]
+lists_num = make_int_lists(list_num)    
+make_new_int_maps(lists_num , DB_test1, DB_test2 )
 (F_cf, relevant_indexes) = algorithm_6("./database",k,DB_test1,DB_test2)
 print(F_cf)
 print(algorithm_4(relevant_indexes, F_cf, k, "./database",DB_test1))
+'''
+
+
+lists_num = make_int_lists(list_num)
+make_new_int_maps(lists_num , attributes_array_by_order_database, attributes_array_int_then_string )
+(F_cf, relevant_indexes) = algorithm_6("./big_database.txt",k,attributes_array_by_order_database,attributes_array_int_then_string)
+print(F_cf)
+cover = algorithm_4(relevant_indexes, F_cf, k, "./big_database.txt",attributes_array_by_order_database)
+print(cover)
+print(algorithm_2(k,cover))
 
 
 

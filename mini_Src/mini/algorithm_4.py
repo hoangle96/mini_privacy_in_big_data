@@ -7,13 +7,10 @@ from __future__ import division
 import re
 import random
 from _functools import reduce
-from mini.algorithm_6_7 import algorithm_6
-from mini.taxonomies import attributes_array_by_order_database,\
-    attributes_array_int_then_string
 from mini.helper_funcs import number_of_leaves
 
 import sys
-from numpy.core.test_rational import rational
+#from numpy.core.test_rational import rational
 
 
 def generalize_S(database_path, S, relevant_indexes,attributes_array_by_order_database):

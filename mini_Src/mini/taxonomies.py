@@ -171,16 +171,15 @@ list_capital_gain = []
 list_capital_loss = []
 list_hours_per_week = []
 
-'''
-list_num = [
-    list_age,
+
+list_num = [list_age,
     list_fnlwgt,
     list_education_num,
     list_capital_gain,
     list_capital_loss,
-    list_hours_per_week ]
-    '''
-list_num = [list_age]
+    list_hours_per_week]
+    
+
 
 
 
