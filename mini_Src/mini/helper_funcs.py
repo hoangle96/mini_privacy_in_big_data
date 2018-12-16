@@ -8,7 +8,14 @@ Created on 2 Dec 2018
 from _functools import reduce
 import re
 
-def map_iterator_int(value,i,root): 
+def map_iterator_int(value,i,root):
+    children = root["children"] 
+    if  children == []:
+        if (root["data"][0]<=int(value)) and (int(value)<=root["data"][1]):
+            root['index'].append(i)
+    else:
+        list(map(lambda child : map_iterator_int(value,i,child), children))
+    '''
     for key,mapval in root.items():
         if key == 'children' :       
             if mapval != []:
@@ -19,8 +26,16 @@ def map_iterator_int(value,i,root):
                 if int(value) in r:
                     to_add = i
                     root.get('index').append(to_add)
-    
+    '''
 def map_iterator_str(value,i,root): 
+    children = root["children"] 
+    if  children == []:
+        if value.lower() == root["data"].lower():
+            root['index'].append(i)
+    else:
+        list(map(lambda child : map_iterator_str(value,i,child), children))
+    
+    '''
     for key,mapval in root.items():
         if key == 'children' :       
             if mapval != []:
@@ -30,7 +45,7 @@ def map_iterator_str(value,i,root):
                 if value.lower() == root.get('data').lower(): 
                     to_add = i
                     root.get('index').append(to_add)
-                         
+    '''                     
 def sum_of_supports(node):
     if node.get('children') == []:
         length=len(node.get('index'))
