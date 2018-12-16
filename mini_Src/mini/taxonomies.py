@@ -1,12 +1,12 @@
 '''
 Created on 2 Dec 2018
-
+31, Private, 53042, Some-college, 10, Married-civ-spouse, Machine-op-inspct, Husband, Black, Male, 0, 0, 40, Trinadad&Tobago, <=50K
 @author: yaeltu@wincs.cs.bgu.ac.il
 '''
 # building a taxonomy tree for each attribute
-age_map = {"data" : "17-90", "children" :[{"data":[17,25], "children": [], "index":[]},{"data":[26,35], "children": [],"index":[]},{"data":[36,45], "children": [],"index":[]},
+age_map = {"data" : "0-120", "children" :[{"data":[0,25], "children": [], "index":[]},{"data":[26,35], "children": [],"index":[]},{"data":[36,45], "children": [],"index":[]},
                                           {"data": [46,55], "children": [],"index":[]},{"data":[56,65], "children": [],"index":[]},{"data":[66,75], "children": [],"index":[]},
-                                          {"data":[76,85], "children": [],"index":[]},{"data":[86,95], "children": [],"index":[]}]}
+                                          {"data":[76,85], "children": [],"index":[]},{"data":[86,120], "children": [],"index":[]}]}
 
 workclass_map = {"data" : "*", "children": 
                  [{"data" : "private", "children" :[],"index":[]}, {"data": "self-emp", "children" : 
@@ -17,11 +17,11 @@ workclass_map = {"data" : "*", "children":
                                                            [{"data" : "federal-gov", "children": [],"index":[]},{"data" : "local-gov", "children": [],"index":[]},{"data" : "state-gov", "children": [],"index":[]}]},
                                                           {"data": "no income", "children": [{"data" : "without-pay", "children" :[],"index":[]},{"data" : "never-worked", "children": [],"index":[]}]}]}
 
-fnlwgt_map = {"data" : "0-1000000", "children" :
+fnlwgt_map = {"data" : "0-10000000", "children" :
               [{"data": "0-499999", "children" :
                 [{"data" : [0,124999] , "children":[],"index":[]}, {"data": [125000,249999], "children": [],"index":[]}, {"data": [250000,374999], "children" : [],"index":[]}, {"data": [375000,499999], "children" :[],"index":[]}]},
               {"data": "500000-1000000", "children":
-              [{"data" : [500000,624999] , "children":[],"index":[]}, {"data": [625000,749999], "children": [],"index":[]}, {"data": [750000,874999], "children" : [],"index":[]}, {"data": [875000,1000000], "children" :[],"index":[]}]}]}
+              [{"data" : [500000,624999] , "children":[],"index":[]}, {"data": [625000,749999], "children": [],"index":[]}, {"data": [750000,874999], "children" : [],"index":[]}, {"data": [875000,10000000], "children" :[],"index":[]}]}]}
 
 education_map = {"data" : "*", "children" : 
                  [{"data" : "academic", "children":
@@ -45,11 +45,11 @@ education_map = {"data" : "*", "children" :
                      {"data" : "hs-grad", "children" : [],"index":[]}]}]}
 
 
-education_num_map = {"data": "0-16", "children" : [
+education_num_map = {"data": "0-50", "children" : [
     {"data": "0-8", "children" : [
         {"data" :[0,2], "children":[],"index":[]}, {"data" : [3,5], "children" : [],"index":[]},{"data" : [6,8], "children" : [],"index":[]}]},
     {"data": "9-16", "children" : [
-        {"data" :[9,11], "children":[],"index":[]}, {"data" : [11,13], "children" : [],"index":[]},{"data" : [14,16], "children" : [],"index":[]}]}]}
+        {"data" :[9,11], "children":[],"index":[]}, {"data" : [11,13], "children" : [],"index":[]},{"data" : [14,50], "children" : [],"index":[]}]}]}
 
 martial_status_map = {"data" : "*", "children" : [
     {"data" : "married", "children": [
@@ -92,10 +92,10 @@ sex_map = {"data":"*", "children":[{"data": "male", "children":[],"index":[]},
                                    {"data": "female", "children":[],"index":[]}]}
 
 capital_gain_map = {"tag": "gain","data" :"*", "children":[{"data": [0,0], "children":[],"index":[]},
-                                             {"data": [1,100000], "children":[],"index":[]}]}
+                                             {"data": [1,1000000], "children":[],"index":[]}]}
 
 capital_loss_map = {"tag": "loss","data" :"*", "children":[{"data": [0,0], "children":[],"index":[]},
-                                             {"data": [1,100000], "children":[],"index":[]}]}
+                                             {"data": [1,1000000], "children":[],"index":[]}]}
 
 hours_per_week_map = {"data": "0-168", "children" : [
     {"data": "0-83", "children" : [
@@ -119,7 +119,7 @@ native_country_map = {"data": "*", "children": [{"data": "north america", "child
                                                 {"data": "south america", "children":[
                                                                             {"data": "columbia", "children":[],"index":[]},
                                                                             {"data": "ecuador", "children":[],"index":[]},
-                                                                            {"data": "trindad&tobago", "children":[],"index":[]},
+                                                                            {"data": "Trinadad&Tobago", "children":[],"index":[]},
                                                                             {"data": "peru", "children":[],"index":[]}]},
                                                                             
                                                 {"data": "asia", "children":[
@@ -160,10 +160,23 @@ attributes_array_int_then_string = [age_map,fnlwgt_map, education_num_map,capita
                     workclass_map,education_map, martial_status_map, occupation_map,relationship_map, race_map,
                      sex_map,native_country_map,income_map]
 
+
 attributes_array_by_order_database = [age_map,workclass_map,fnlwgt_map,education_map,education_num_map,
-                                      martial_status_map,occupation_map ,relationship_map,race_map,sex_map,
+                                      martial_status_map,occupation_map
+                                    ,relationship_map,race_map,sex_map,
                                       capital_gain_map,capital_loss_map,hours_per_week_map,native_country_map,income_map]
-                                      
+
+'''
+attributes_array_by_order_database = [age_map,workclass_map,fnlwgt_map,education_map,education_num_map,
+                                      martial_status_map,occupation_map
+                                    ,relationship_map,race_map,sex_map,
+                                      capital_gain_map,capital_loss_map,hours_per_week_map
+                                    ]
+attributes_array_int_then_string = [age_map,fnlwgt_map, education_num_map,capital_gain_map,capital_loss_map,hours_per_week_map,
+                    workclass_map,education_map, martial_status_map, occupation_map,relationship_map, race_map,
+                     sex_map
+                     ]
+'''                                     
 list_age = []
 list_fnlwgt = []
 list_education_num = []
@@ -178,8 +191,12 @@ list_num = [list_age,
     list_capital_gain,
     list_capital_loss,
     list_hours_per_week]
-    
-
+'''    
+list_num = [list_age,
+    list_fnlwgt,
+    list_education_num,
+    list_capital_gain]
+'''   
 
 
 
