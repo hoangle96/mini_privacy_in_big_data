@@ -6,7 +6,7 @@ def num(s):
         return int(s)
     except ValueError:
         return float(s)
-
+          
 def dist(a , b):
     return abs(a-b)
 
@@ -46,8 +46,11 @@ def make_dist_mat_from_clusters(lst_clusters):
         mat.append(row)
     return mat
 def single_linkage_clustering (lst_nums):
+    print("single_linkage_clustering start")
     lst_children  = list(map(lambda num : {"data":[num] , "children":[] , "index":[]},lst_nums))
-    while(len(lst_children) > 1): 
+    i = 1
+    while(len(lst_children) > 1):
+        print("while i : " , i) 
         dist_mat_clusters = make_dist_mat_from_clusters(lst_children)
         #print(dist_mat_clusters)
         (min_i ,min_j , _) = calc_min(dist_mat_clusters)
@@ -59,6 +62,8 @@ def single_linkage_clustering (lst_nums):
         lst_children.remove(clust_i)
         lst_children.remove(clust_j)
         lst_children.append(lst_union)
+        i = i + 1
         #print("lstchildren : ")
         #print(lst_children)
+    print("single_linkage_clustering end")
     return lst_children.pop() 

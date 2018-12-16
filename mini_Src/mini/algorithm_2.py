@@ -7,6 +7,7 @@ import copy
 
 
 def algorithm_2(k, cover):
+    print("algorithm 2 started")
     cluster = copy.deepcopy(cover);
     while intersecting_subsets(cluster)!=[]:
         [S_j, j, S_i, i] = intersecting_subsets(cluster)
@@ -21,6 +22,7 @@ def algorithm_2(k, cover):
             cluster.remove(cluster[j])
             cluster.remove(cluster[i])
             cluster.append(S_j | S_i)
+    print("algorithm 2 ended")
     return cluster
         
  
