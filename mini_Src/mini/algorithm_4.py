@@ -21,6 +21,8 @@ def cost_function(generalized_record,attributes_array_by_order_database):
     for j in range(0,r):
         up = len(generalized_record[j]) - 1
         down = number_of_leaves(attributes_array_by_order_database[j]) - 1
+        if(down == 0):
+            return sys.maxsize
         outcome = up / down
         summ = summ + outcome
     
@@ -51,7 +53,7 @@ def algorithm_4(relevant_indexes, F_cf, k, database_path,attributes_array_by_ord
     while(len(D_setminus_E) != 0):
         #for item in F_cf:
         '''change 2'''
-        ratios = list(map(lambda itemgen,itemfcf: (sys.maxsize,itemfcf) if denumerator(itemfcf, D_setminus_E, k) == 0 else ((cost_function(itemgen,attributes_array_by_order_database) / denumerator(itemfcf, D_setminus_E, k)),itemfcf),  generalized_records,F_cf))    
+        ratios = list(map(lambda itemgen,itemfcf: (sys.maxsize,itemfcf) if ((denumerator(itemfcf, D_setminus_E, k) == 0)or(cost_function(itemgen,attributes_array_by_order_database) == sys.maxsize)) else ((cost_function(itemgen,attributes_array_by_order_database) / denumerator(itemfcf, D_setminus_E, k)),itemfcf),  generalized_records,F_cf))    
         (minVal, minS) = reduce(lambda tup1,tup2: (tup1[0],tup1[1]) if tup1[0] < tup2[0] else (tup2[0], tup2[1]), ratios)
         if(len(minS) <= (2*k -1)):
             S_R = minS
