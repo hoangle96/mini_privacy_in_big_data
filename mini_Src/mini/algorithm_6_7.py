@@ -11,9 +11,9 @@ from mini.helper_funcs import remove_nodes_under_k
 from mini.helper_funcs import sum_of_supports
 from _functools import reduce
 from mini.helper_funcs import set_of_supports
-from mini.taxonomies import list_num
+#from mini.taxonomies import list_num
 
-def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string):
+def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string,list_num):
     '''step 1'''
     print("algorithm_6 start")
     with open(database_path, 'r') as f: 
@@ -43,7 +43,7 @@ def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_ar
     processed = []
     F_cf = []
     F_cf = algorithm_7(attributes_map, k, processed,F_cf)
-    return (F_cf, relevant_indexes, i)
+    return (F_cf, relevant_indexes, i-1)
 
 def algorithm_6_test(k,taxonomies_tree):
     '''step 1'''
