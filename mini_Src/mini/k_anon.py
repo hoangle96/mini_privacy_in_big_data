@@ -5,13 +5,13 @@ Created on 13 Dec 2018
 '''
 
 from mini.helper_funcs import generalize_S
-
-
+#import os
 
 def k_anon(database_path, cluster, relevant_indexes,attributes_array_by_order_database, lines_in_database):
     print("k_anon started")
     generalized_cluster = generalize_S(database_path, cluster, relevant_indexes,attributes_array_by_order_database)
-    f= open("generalized_database.txt","w+")
+    #print(os.getcwd())
+    f= open("./result_dbs/generalized_database_k_anon.txt","w+")
     '''changed'''
     for i in relevant_indexes:
         index = find_index_in_cluster(cluster, i)
