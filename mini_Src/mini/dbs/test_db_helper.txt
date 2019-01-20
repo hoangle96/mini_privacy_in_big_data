@@ -1,0 +1,3 @@
+10, indian
+20, indian
+30, pacific
