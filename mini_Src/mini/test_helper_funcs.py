@@ -4,9 +4,9 @@ Created on Jan 17, 2019
 @author: user
 '''
 import unittest
-from mini.helper_funcs import map_iterator_int,map_iterator_str,sum_of_supports,set_of_supports
-from mini.helper_funcs import remove_nodes_under_k
-from mini.helper_funcs import number_of_leaves , generalize_S
+from helper_funcs import map_iterator_int,map_iterator_str,sum_of_supports,set_of_supports
+from helper_funcs import remove_nodes_under_k
+from helper_funcs import number_of_leaves , generalize_S
 
 class TestHelper(unittest.TestCase):
 

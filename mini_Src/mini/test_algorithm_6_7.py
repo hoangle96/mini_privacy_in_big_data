@@ -4,8 +4,8 @@ Created on Jan 19, 2019
 @author: user
 '''
 import unittest
-from mini.algorithm_6_7 import algorithm_6
-from mini.make_int_taxonomies import make_int_lists , make_new_int_maps
+from algorithm_6_7 import algorithm_6
+from make_int_taxonomies import make_int_lists , make_new_int_maps
 class TestAlgo_6_7(unittest.TestCase):
     
     def test_algo_6_7_article(self):
@@ -33,8 +33,9 @@ class TestAlgo_6_7(unittest.TestCase):
         attributes_array_by_order_database = [DB_taxonomy]
         attributes_array_int_then_string = [DB_taxonomy]
         list_num = []
+        num_lines = 10
         expected_result = [{1,2,3},{1,2,3,4,5,6},{8,9,10},{7,8,9,10},{1,2,3,4,5,6,7,8,9,10}]
-        (F_cf, relevant_indexes, lines_in_database) = algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string,list_num)
+        (F_cf, relevant_indexes, lines_in_database) = algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string,list_num,num_lines)
         #print(F_cf)
         for item in F_cf :
             #print(item)
@@ -59,7 +60,10 @@ class TestAlgo_6_7(unittest.TestCase):
         first_list = []
         second_list = []
         list_num = [first_list , second_list]
-        lists_num = make_int_lists(list_num,database_path,attributes_array_by_order_database,attributes_array_int_then_string)
+        
+        num_lines = 3
+        
+        lists_num = make_int_lists(list_num,database_path,attributes_array_by_order_database,attributes_array_int_then_string,num_lines)
         make_new_int_maps(lists_num , attributes_array_by_order_database, attributes_array_int_then_string )
         '''
         #bug found in make list numbers from database - duplicates were not removed before making taxonomy
@@ -89,8 +93,10 @@ class TestAlgo_6_7(unittest.TestCase):
         #print(attributes_array_by_order_database[0]) 
         #print(attributes_array_by_order_database[1])
         
+        
+        
         expected_result = [{1,2},{2,3},{1,2,3}]
-        (F_cf, relevant_indexes, lines_in_database) = algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string,list_num)
+        (F_cf, relevant_indexes, lines_in_database) = algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string,list_num,num_lines)
         for item in F_cf :
             self.assertTrue(item in expected_result)
         for item in expected_result :
@@ -113,7 +119,10 @@ class TestAlgo_6_7(unittest.TestCase):
         first_list = []
         second_list = []
         list_num = [first_list , second_list]
-        lists_num = make_int_lists(list_num,database_path,attributes_array_by_order_database,attributes_array_int_then_string)
+        
+        num_lines = 3
+        
+        lists_num = make_int_lists(list_num,database_path,attributes_array_by_order_database,attributes_array_int_then_string,num_lines)
         make_new_int_maps(lists_num , attributes_array_by_order_database, attributes_array_int_then_string )
         
         taxonomy_first = {'data': [1, 2], 
@@ -126,8 +135,9 @@ class TestAlgo_6_7(unittest.TestCase):
                                {'data': [3, 3], 'children': [], 'index': [1]}, 
                                {'data': [4, 4], 'children': [], 'index': [2,3]}]}
         
+         
         expected_result = [{1,2},{2,3},{1,2,3},{1,3}]
-        (F_cf, relevant_indexes, lines_in_database) = algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string,list_num)
+        (F_cf, relevant_indexes, lines_in_database) = algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string,list_num,num_lines)
         for item in F_cf :
             self.assertTrue(item in expected_result)
         for item in expected_result :

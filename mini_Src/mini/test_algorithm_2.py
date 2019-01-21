@@ -4,7 +4,7 @@ Created on Jan 20, 2019
 @author: user
 '''
 import unittest
-from mini.algorithm_2 import algorithm_2
+from algorithm_2 import algorithm_2
 
 class TestAlgo_2(unittest.TestCase):
     

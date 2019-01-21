@@ -197,6 +197,102 @@ list_num = [list_age,
     list_education_num,
     list_capital_gain]
 '''   
+'''end 1st db'''
 
+'''start 2nd db'''
+DB_taxonomy2 = {"data":"Clothing", 
+                               "children":[{"data": "Footwear", 
+                                            "children":[{"data": "Shoes", "children":[],"index":[]},
+                                                        {"data": "Boots", "children":[],"index":[]},
+                                                        {"data": "Sandals", "children":[],"index":[]}]},
+                                           
+                                            {"data": "Clothes", 
+                                             "children":[ {"data": "Shirts", "children":[],"index":[]},
+                                                        {"data": "Pants", "children":[],"index":[]},
+                                                        {"data": "Outdoors", "children":[
+                                                                                        {"data": "Sport-Jackets", "children":[],"index":[]},
+                                                                                        {"data": "Ski-Pants", "children":[],"index":[]}
+                                                                                        ]}        
+                                                        
+                                                        ]}
+                                            ]}
+
+attributes_array_by_order_database2 = [DB_taxonomy2]
+attributes_array_int_then_string2 = [DB_taxonomy2]
+list_num2 = []
+'''end 2nd db'''
+
+'''start 3rd db'''
+
+taxonomy_first3 = {'data': [1, 2], 
+                          'children': [
+                              {'data': [1, 1], 'children': [], 'index': []}, 
+                              {'data': [2, 2], 'children': [], 'index': []}]}
+        
+taxonomy_second3 = {'data': [3, 4], 
+                   'children': [
+                       {'data': [3, 3], 'children': [], 'index': []}, 
+                       {'data': [4, 4], 'children': [], 'index': []}]}
+
+attributes_array_by_order_database3 = [taxonomy_first3 , taxonomy_second3]
+attributes_array_int_then_string3 = [taxonomy_first3 , taxonomy_second3]
+first_list3 = []
+second_list3 = []
+list_num3 = [first_list3 , second_list3]
+'''end 3rd db'''
+
+'''start 4th db'''
+taxonomy_first4 = {'data': [1, 2], 
+                          'children': [
+                              {'data': [1, 1], 'children': [], 'index': []}, 
+                              {'data': [2, 2], 'children': [], 'index': []}]}
+        
+taxonomy_second4 = {'data': [3, 4], 
+                   'children': [
+                       {'data': [3, 3], 'children': [], 'index': []}, 
+                       {'data': [4, 4], 'children': [], 'index': []}]}
+taxonomy_str = {"data":"instruments", 
+                        "children":[
+                            {"data": "String", "children":[{"data": "guitar", "children":[],"index":[]}],"index":[]},
+                            {"data": "Percussion", "children":[{"data": "piano", "children":[],"index":[]}],"index":[]}]}
+attributes_array_by_order_database4 = [taxonomy_first4 ,taxonomy_str, taxonomy_second4]
+attributes_array_int_then_string4 = [taxonomy_first4 , taxonomy_second4,taxonomy_str]
+first_list4 = []
+second_list4 = []
+list_num4 = [first_list4 , second_list4]
+'''end 4th db'''
+
+'''start 5th db'''
+age_map5 = {'data': [38, 53], 
+                   'children': [
+                        {'data': [38, 39], 'children': [
+                                            {'data': [39, 39], 'children': [], 'index': []}, 
+                                            {'data': [38, 38], 'children': [], 'index': []}]}, 
+                        {'data': [50, 53], 'children': [
+                                            {'data': [50, 50], 'children': [], 'index': []}, 
+                                            {'data': [53, 53], 'children': [], 'index': []}]}]}
+
+workclass_map5 = {"data" : "*", "children": 
+         [{"data" : "private", "children" :[],"index":[]}, {"data": "self-emp", "children" : 
+                                                 [{"data" : "self-emp-not-inc", "children": [],"index":[]},
+                                                  {"data" : "self-emp-inc", "children": [],"index":[]}
+                                                  ]},
+                                                  {"data" : "gov", "children":
+                                                   [{"data" : "federal-gov", "children": [],"index":[]},{"data" : "local-gov", "children": [],"index":[]},{"data" : "state-gov", "children": [],"index":[]}]},
+                                                  {"data": "no income", "children": [{"data" : "without-pay", "children" :[],"index":[]},{"data" : "never-worked", "children": [],"index":[]}]}]}
+
+
+attributes_array_by_order_database5 = [age_map5 , workclass_map5]
+attributes_array_int_then_string5 = [age_map5 , workclass_map5]
+first_list5 = []
+list_num5 = [first_list5]
+
+'''end 5th db'''
+
+taxonomies_list_and_list_nums = [(attributes_array_by_order_database ,attributes_array_int_then_string ,list_num,"adult") ,
+                                 (attributes_array_by_order_database2 ,attributes_array_int_then_string2 ,list_num2,"article_clothing"),
+                                 (attributes_array_by_order_database3 ,attributes_array_int_then_string3 ,list_num3,"multiple"),
+                                 (attributes_array_by_order_database4 ,attributes_array_int_then_string4 ,list_num4,"multiple_2"),
+                                 (attributes_array_by_order_database5 ,attributes_array_int_then_string5 ,list_num5,"cover(adult4x2)")]
 
 

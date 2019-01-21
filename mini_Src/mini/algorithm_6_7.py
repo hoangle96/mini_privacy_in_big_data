@@ -5,18 +5,19 @@ Created on 2 Dec 2018
 '''
 
 import re
-from mini.helper_funcs import map_iterator_int
-from mini.helper_funcs import map_iterator_str
-from mini.helper_funcs import remove_nodes_under_k
-from mini.helper_funcs import sum_of_supports
+from helper_funcs import map_iterator_int
+from helper_funcs import map_iterator_str
+from helper_funcs import remove_nodes_under_k
+from helper_funcs import sum_of_supports
 from _functools import reduce
-from mini.helper_funcs import set_of_supports
+from helper_funcs import set_of_supports
 #from mini.taxonomies import list_num
 
-def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string,list_num):
+def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_array_int_then_string,list_num,num_lines):
     '''step 1'''
     print("algorithm_6 start")
-    with open(database_path, 'r') as f: 
+    with open(database_path, 'r') as f:
+        l = 1 
         i = 1
         relevant_indexes = set()
         #print("algorithm_6 i : ","00")
@@ -32,8 +33,12 @@ def algorithm_6(database_path,k,attributes_array_by_order_database,attributes_ar
                     map_iterator_int(line_arr[j],i,current_row)
                 else:
                     map_iterator_str(line_arr[j],i,current_row)
-            relevant_indexes.add(i)        
+            relevant_indexes.add(i)
+            if l>=num_lines:
+                i = i + 1
+                break        
             i = i + 1
+            l = l + 1
     f.close()
             
     '''step 2'''

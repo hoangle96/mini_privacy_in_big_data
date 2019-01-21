@@ -4,8 +4,8 @@ Created on Jan 19, 2019
 @author: user
 '''
 import unittest
-from mini.algorithm_4 import algorithm_4
-from mini.make_int_taxonomies import make_int_lists , make_new_int_maps
+from algorithm_4 import algorithm_4
+from make_int_taxonomies import make_int_lists , make_new_int_maps
 
 class TestAlgo_4(unittest.TestCase):
     

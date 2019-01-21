@@ -4,7 +4,7 @@ Created on 13 Dec 2018
 @author: yaeltu@wincs.cs.bgu.ac.il
 '''
 
-from mini.helper_funcs import generalize_S
+from helper_funcs import generalize_S
 #import os
 
 def k_anon(database_path, cluster, relevant_indexes,attributes_array_by_order_database, lines_in_database):

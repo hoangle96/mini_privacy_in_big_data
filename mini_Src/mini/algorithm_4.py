@@ -7,7 +7,7 @@ from __future__ import division
 import re
 import random
 from _functools import reduce
-from mini.helper_funcs import number_of_leaves, generalize_S
+from helper_funcs import number_of_leaves, generalize_S
 
 import sys
 #from numpy.core.test_rational import rational

@@ -4,8 +4,8 @@ Created on Jan 19, 2019
 @author: user
 '''
 import re
-from mini.hierarchical_clustering import single_linkage_clustering
-from mini.hierarchical_clustering import num
+from hierarchical_clustering import single_linkage_clustering
+from hierarchical_clustering import num
 
 '''make the number taxonomie have intervals instead of sets of numbers in each node'''
 def convert_from_newmap_to_oldmap(map_num):
@@ -19,8 +19,9 @@ def convert_from_newmap_to_oldmap(map_num):
                 "children":list(map(convert_from_newmap_to_oldmap , map_num["children"])) }
 
 '''populate the each list of numbers with its corresponding attribute numbers'''
-def make_int_lists(list_num , database_path,attributes_array_by_order_database,attributes_array_int_then_string):
+def make_int_lists(list_num , database_path,attributes_array_by_order_database,attributes_array_int_then_string,num_lines):
     with open(database_path, 'r') as f: 
+        l = 1
         i = 1
         for line in f:
             line_arr = re.split(", |\\n",line)
@@ -38,8 +39,13 @@ def make_int_lists(list_num , database_path,attributes_array_by_order_database,a
                     print("i : ",i ,"j : ", j)
                     n = num(line_arr[j])
                     if not(n in list_num[index_of_int]):
-                        list_num[index_of_int].append(n)   
+                        list_num[index_of_int].append(n) 
+            if l>=num_lines:
+                i = i + 1
+                break        
             i = i + 1
+            l = l + 1  
+        
     f.close()
     return list_num
 '''create taxonomies trees for the numbers attributes from the lists of numbers '''

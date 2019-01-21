@@ -4,7 +4,7 @@ Created on Jan 20, 2019
 @author: user
 '''
 import unittest
-from mini.hierarchical_clustering import single_linkage_clustering
+from hierarchical_clustering import single_linkage_clustering
 class Test_Hierarchical_Clustering(unittest.TestCase):
     
     def test_hierar_clust_simple(self):
