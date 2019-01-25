@@ -1,10 +1,46 @@
 # mini_privacy_in_big_data
 
 This is a mini project based on the article "A Practical Approximation Algorithm for Optimal k-Anonymity".
-(for now algorithms 6 and 7 from the mentioned article were implemented.
-When progress is made this file will be updated as well.)
+
+index :
+A - preliminaries
+B - main libraries
+C - how to run
+D - outline of implementation
+E - folder structure
+F - modules explanation
+
+
+***A***
+preliminaries :
 
 Programming language used - python version 3.6
+Operating system used - linux ubuntu 18.04
+
+***B***
+main libraries :
+-regular expressions(re)
+-_functools
+-system specific parameters and functions(sys)
+-tkinter
+-unittest
+
+***C***
+how to run :
+from within mini_privacy_in_big_data folder - 
+in order to run tests one should execute the following command through shell:
+$>> ./runtest.sh
+
+in order to run the actual program which is run by the gui one should execute the following command through shell:
+$>> ./rungui.sh
+
+note:
+one might need to give execution permissions for the above executables in order for them to run - 
+$>> chmod +x ./runtests.sh
+$>> chmod +x ./rungui.sh
+ 
+***D***
+outline of implementation :
 
 The main algorithm in the article to obtain k-anonymity is Algorithm 5(page 13):
 
@@ -40,11 +76,6 @@ one can see that not all 3000 records are in the above file and thats because th
 Algorithm 6 needs as one of its inputs a list of taxonomies of the database for which k anonymization is needed.
 those taxonomies where written by hand and are in module mini.taxonomies.
 these were written in a similar way to what was done in the article in pages 23-24.
-an improvement in accuracy(smaller mistake in the apprximation) can be achieved by using module mini.hierarchical_clustering on the 6 numeric(continuous) attributes.
-this improvement is done by commenting out the next lines in the main module:
-
-#lists_num = make_int_lists(list_num,"./adult.data",attributes_array_by_order_database)
-#make_new_int_maps(lists_num , attributes_array_by_order_database, attributes_array_int_then_string )
 
 and the taxonomies for the numeric attributes will replace the written static ones dynamically during runtime.
 
@@ -60,5 +91,56 @@ and on the monotonicity assumption on the cost function and on lemma 1 from page
 
 outline of the proof presented in page 10 for correctness of the algorithm(5) is that algorithm 4 produces an approximated cover with cost alpha times than that of the optimal , then algorithm 2 unifies intersecting subsets which does not increase cost by lemma 1 or remove a record from a subset which does not increase cost by monotonicity.
 then by theorem 1 the k-anonimization is of factor alpha from the optimal.
+
+***E***
+folder structure :
+
+mini_privacy_in_big_data folder
+	--rungui.sh
+	--runtests.sh
+	--mini_Src
+		----generalized_database.txt
+		----README.md
+		----algorithm_2.py
+		----algorithm_4.py
+		----algorithm_6_7.py
+		----k_anon.py
+		----main.py
+		----helper_funcs.py
+		----hierarchical_clustering.py
+		----make_int_taxonomies.py
+		----taxonomies.py
+		
+		----test_algorithm_2.py
+		----test_algorithm_4.py
+		----test_algorithm_6_7.py
+		----test_helper_funcs.py
+		----test_hierarchical_clustering.py
+
+		----result_dbs
+		----dbs
+			------adult.data
+            ------test_db_cover_1
+			------test_db_multiple_2.txt
+			------test_db_clothing.txt
+			------test_db_helper.txt
+			------test_db_multiple.txt
+
+***F*** 
+modules explanation :
+
+taxonomies.py - this module contains the taxonomies for each database that the program supports k anonimization for
+hierarchical_clustering.py - this module implements the single linkage clustering algorithm for the numerical quasi identifiers
+make_int_taxonomies.py - the actual building of the numerical taxonomies
+
+algorithm_6_7.py - implementation of algorithms 6,7 in pages 18,19 from the article 
+algorithm_4.py - implementation of algorithm 4 in page 13 from the article
+algorithm_2.py - implementation of algorithm 2 in page 9 in from article
+k_anon.py - implementation of k anonimization from a clustering by the idea presented in article "k-anonymization with minimal loss of information" by Tamir Tassa in page 19
+main.py - implementation of algorithm 5 in page 13 from the article , also implements the gui of the program
+helper_funcs.py - this module contains the helper functions used in algorithm_6_7.py , algorithm_4.py and k_anon.py
+
+the following are test modules for the corresponding modules above :
+test_algorithm_2.py , test_algorithm_4.py , test_algorithm_6_7.py , test_helper_funcs.py , test_hierarchical_clustering.py
 
 
