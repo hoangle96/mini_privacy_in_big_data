@@ -96,6 +96,7 @@ then by theorem 1 the k-anonimization is of factor alpha from the optimal.
 folder structure :
 
 mini_privacy_in_big_data folder
+
 	--rungui.sh
 	--runtests.sh
 	--mini_Src
